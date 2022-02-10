@@ -1,0 +1,37 @@
+PODS:
+  - KJCategories (1.0.6):
+    - KJCategories/Core (= 1.0.6)
+  - KJCategories/C7/UINavigation (1.0.6)
+  - KJCategories/C7/UIViewController (1.0.6)
+  - KJCategories/Core (1.0.6):
+    - KJCategories/Core/Foundation (= 1.0.6)
+    - KJCategories/Core/UIKit (= 1.0.6)
+  - KJCategories/Core/Foundation (1.0.6)
+  - KJCategories/Core/UIKit (1.0.6)
+  - Masonry (1.1.0)
+  - OpencvQueen (0.1.0)
+
+DEPENDENCIES:
+  - KJCategories
+  - KJCategories/C7/UINavigation
+  - KJCategories/C7/UIViewController
+  - Masonry
+  - OpencvQueen (from `./`)
+
+SPEC REPOS:
+  trunk:
+    - KJCategories
+    - Masonry
+
+EXTERNAL SOURCES:
+  OpencvQueen:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  KJCategories: 25de9e86d9ff8bdf9cc38c3dc174a76a08e367e9
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  OpencvQueen: db01ec55de60e72c8f2f9dd1c7904b25a54b117f
+
+PODFILE CHECKSUM: ccd171e8e92c6b301ea41c8b8adb032a48bc6402
+
+COCOAPODS: 1.11.2
