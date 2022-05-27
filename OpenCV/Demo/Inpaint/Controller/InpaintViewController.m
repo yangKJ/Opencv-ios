@@ -1,6 +1,6 @@
 //
 //  InpaintViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/22.
 //
@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view.
     __block UIImage *_image = self.topImageView.image = [UIImage imageNamed:@"Inpaint.jpg"];
     self.topSlider.value = 0.25;
-    _weakself;
+    __weak __typeof(self) weakself = self;
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvInpaintImage:10];
     };
@@ -28,9 +28,9 @@
         CGFloat x = 20 * value;
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvInpaintImage:x];
     };
-    kGCD_async(^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *image = [_image kj_opencvInpaintImage:5];
-        kGCD_main(^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             weakself.bottomImageView.image = image;
         });
     });

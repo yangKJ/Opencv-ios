@@ -1,6 +1,6 @@
 //
 //  HoughViewController.h
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/21.
 //

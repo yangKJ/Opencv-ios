@@ -1,13 +1,22 @@
 //
 //  BaseViewController.h
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
 //
 
 #import <UIKit/UIKit.h>
 #import <OpencvQueen/OpencvQueen.h>
-@import KJCategories;
+#import <Masonry/Masonry.h>
+#import "UIImage+KJCapture.h"
+#import "UIButton+KJBlock.h"
+#import "UIView+KJFrame.h"
+#import "UIView+KJXib.h"
+#import "UIView+KJGestureBlock.h"
+#import "UIColor+KJExtension.h"
+#import "UINavigationBar+KJExtension.h"
+#import "UINavigationItem+KJExtension.h"
+#import "UIViewController+KJExtension.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

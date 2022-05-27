@@ -1,9 +1,9 @@
 //
 //  LuminanceViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "LuminanceViewController.h"
@@ -22,7 +22,7 @@
 //    self.orignalImageView.image = [UIImage imageNamed:@"banana"];
     self.topSlider.value = 0;
     self.bottomSlider.value = 0.5;
-    _weakself;
+    __weak __typeof(self) weakself = self;
     weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvChangeContrast:0 luminance:1];
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvChangeContrast:0 luminance:1];

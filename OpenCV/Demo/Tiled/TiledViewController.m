@@ -1,9 +1,9 @@
 //
 //  TiledViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "TiledViewController.h"
@@ -22,10 +22,10 @@
     self.topSlider.value = 0.5;
     self.bottomSlider.value = 0.5;
     UIImage *temp = self.topImageView.image;
-    _weakself;
-    kGCD_async(^{
+    __weak __typeof(self) weakself = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *image = [temp kj_opencvTiledRows:5 cols:5];
-        kGCD_main(^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             weakself.bottomImageView.image = image;
         });
     });

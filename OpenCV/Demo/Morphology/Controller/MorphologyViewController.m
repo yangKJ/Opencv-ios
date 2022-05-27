@@ -1,9 +1,9 @@
 //
 //  MorphologyViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 #import "MorphologyViewController.h"
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.topImageView.image = [UIImage imageNamed:@"Morphology"];
-    _weakself;
+    __weak __typeof(self) weakself = self;
     weakself.bottomSlider.value = 0.42;
     weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvMorphology:KJOpencvMorphologyStyleOPEN element:42];
     self.kButtonAction = ^{

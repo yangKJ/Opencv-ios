@@ -1,9 +1,9 @@
 //
 //  SobelViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/21.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 #import "SobelViewController.h"
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.topImageView.image = [UIImage imageNamed:@"Sobel.jpeg"];
-    _weakself;
+    __weak __typeof(self) weakself = self;
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvFeatureExtractionFromSobel];
     };

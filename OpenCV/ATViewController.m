@@ -87,7 +87,7 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         CGFloat y = CGRectGetMaxY(self.tipLabel.frame);
-        CGRect rect = CGRectMake(0, self.tipLabel.bottom, self.view.width, self.view.height-y);
+        CGRect rect = CGRectMake(0, CGRectGetMaxY(self.tipLabel.frame), self.view.frame.size.width, self.view.frame.size.height-y);
         _tableView = [[UITableView alloc]initWithFrame:rect style:(UITableViewStylePlain)];
         _tableView.rowHeight = 50;
         _tableView.sectionHeaderHeight = 0.0001f;

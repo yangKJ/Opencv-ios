@@ -1,9 +1,9 @@
 //
 //  ChangeColorViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 #import "ChangeColorViewController.h"
 
@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _weakself;
+    __weak __typeof(self) weakself = self;
     weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvChangeR:-1 g:-1 b:-1];
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvChangeR:-1 g:-1 b:-1];

@@ -1,6 +1,6 @@
 //
 //  HoughViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/21.
 //
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.topImageView.image = [UIImage imageNamed:@"Hough"];
-    _weakself;
+    __weak __typeof(self) weakself = self;
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvHoughLinesCorrectTextImageFillColor:UIColorFromHEXA(0x292a30, 1)];
     };

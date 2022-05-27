@@ -6,7 +6,7 @@
 ---
 
 ## Features
-At the moment, the most important features of [OpencvQueen](https://github.com/yangKJ/MetalQueen) can be summarized as follows:
+At the moment, the most important features of [OpencvQueen](https://github.com/yangKJ/OpencvQueen) can be summarized as follows:
 
 - [x] Hough line detection and correction text.
 - [x] Feature extraction processing.
@@ -63,7 +63,7 @@ pod 'OpencvQueen'
 
 > The general process is almost like this, the Demo is also written in great detail, you can check it out for yourself.🎷
 >
-> [**OpencvQueenDemo**](https://github.com/yangKJ/MetalQueen)
+> [**OpencvQueenDemo**](https://github.com/yangKJ/OpencvQueen)
 >
 > Tip: If you find it helpful, please help me with a star. If you have any questions or needs, you can also issue.
 >

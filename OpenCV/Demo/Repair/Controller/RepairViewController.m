@@ -1,9 +1,9 @@
 //
 //  RepairViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "RepairViewController.h"
@@ -20,10 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     __block UIImage *oldImage = self.topImageView.image = [UIImage imageNamed:@"Repair.jpg"];
-    _weakself;
-    kGCD_async(^{
+    __weak __typeof(self) weakself = self;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *image = [oldImage kj_opencvRepairImage];
-        kGCD_main(^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             weakself.bottomImageView.image = image;
         });
     });

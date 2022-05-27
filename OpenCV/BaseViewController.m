@@ -1,12 +1,11 @@
 //
 //  BaseViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
 //
 
 #import "BaseViewController.h"
-#import <Masonry/Masonry.h>
 
 @interface BaseViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -30,7 +29,7 @@
 
 - (void)setupInit{
     self.view.backgroundColor = UIColorFromHEXA(0xf5f5f5, 1);
-    _weakself;
+    __weak __typeof(self) weakself = self;
     [self.navigationItem kj_makeNavigationItem:^(UINavigationItem * _Nonnull make) {
         make.kAddBarButtonItemInfo(^(KJNavigationItemInfo * _Nonnull info) {
             info.imageName = @"wode_nor";
@@ -47,7 +46,7 @@
                 barButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
             };
         }, ^(UIButton * _Nonnull kButton) {
-            CGRect rect = CGRectMake(0, weakself.topImageView.top, weakself.view.width, weakself.bottomImageView.bottom);
+            CGRect rect = CGRectMake(0, weakself.topImageView.frame.origin.y, weakself.view.frame.size.width, CGRectGetMaxY(weakself.bottomImageView.frame));
             UIImage *image = [UIImage kj_captureScreen:weakself.view Rect:rect Quality:3];
             [weakself kj_shareActivityWithItems:@[UIImagePNGRepresentation(image)] complete:^(BOOL success) {
                 
@@ -154,7 +153,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info{
         [_issuesButton kj_addAction:^(UIButton * _Nonnull kButton) {
             #pragma clang diagnostic push
             #pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            NSURL *url = [NSURL URLWithString:@"https://github.com/yangKJ/MetalQueen"];
+            NSURL *url = [NSURL URLWithString:@"https://github.com/yangKJ/OpencvQueen"];
             [[UIApplication sharedApplication] openURL:url];
             #pragma clang diagnostic pop
         }];
@@ -168,7 +167,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info{
         _topImageView.backgroundColor = [UIColor.greenColor colorWithAlphaComponent:0.5];
         _topImageView.image = [UIImage imageNamed:@"fish"];
         _topImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _weakself;
+        __weak __typeof(self) weakself = self;
         [_topImageView kj_AddTapGestureRecognizerBlock:^(UIView * view, UIGestureRecognizer * gesture) {
             UIImagePickerController *vc = [[UIImagePickerController alloc] init];
             vc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -184,7 +183,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info{
         _bottomImageView = [[UIImageView alloc]initWithFrame:CGRectZero];
         _bottomImageView.backgroundColor = [UIColor.blueColor colorWithAlphaComponent:0.5];
         _bottomImageView.contentMode = UIViewContentModeScaleAspectFit;
-        _weakself;
+        __weak __typeof(self) weakself = self;
         [_bottomImageView kj_AddTapGestureRecognizerBlock:^(UIView * view, UIGestureRecognizer * gesture) {
             UIImage * image = ((UIImageView *)view).image;
             if (image == nil) return;
@@ -201,7 +200,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *, id> *)info{
         [_changeButton setTitle:@"Change" forState:(UIControlStateNormal)];
         [_changeButton setTitleColor:UIColor.whiteColor forState:(UIControlStateNormal)];
         _changeButton.titleLabel.textAlignment = 1;
-        _weakself;
+        __weak __typeof(self) weakself = self;
         [_changeButton kj_addAction:^(UIButton * _Nonnull kButton) {
             weakself.kButtonAction ? weakself.kButtonAction() : nil;
         }];

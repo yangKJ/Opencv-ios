@@ -1,9 +1,9 @@
 //
 //  BlurViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 #import "BlurViewController.h"
 
@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.topImageView.image = [UIImage imageNamed:@"Blur.jpg"];
-    _weakself;
+    __weak __typeof(self) weakself = self;
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvBilateralFilterBlurRadio:15 sigma:100];
     };

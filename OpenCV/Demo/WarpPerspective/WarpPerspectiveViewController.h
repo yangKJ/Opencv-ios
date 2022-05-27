@@ -1,9 +1,9 @@
 //
 //  WarpPerspectiveViewController.h
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "BaseViewController.h"

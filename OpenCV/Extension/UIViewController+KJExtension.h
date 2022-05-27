@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIViewController (KJExtension)
+@interface UIViewController (KJExtension) <UINavigationControllerDelegate>
 
 /// Jump back to the specified controller
 /// @param clazz specifies the controller class name
@@ -19,6 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Switch the root view controller
 - (void)kj_changeRootViewController:(void(^)(BOOL success))complete;
+
+
+/// Whether to turn on the sliding back gesture
+- (void)kj_openPopGesture:(BOOL)open;
+
+/// The system comes with sharing
+/// @param items share data
+/// @param complete Sharing completion callback processing
+/// @return Return to share controller
+- (UIActivityViewController *)kj_shareActivityWithItems:(NSArray *)items
+                                               complete:(nullable void(^)(BOOL success))complete;
 
 @end
 

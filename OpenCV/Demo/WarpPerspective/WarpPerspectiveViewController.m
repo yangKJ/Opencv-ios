@@ -1,9 +1,9 @@
 //
 //  WarpPerspectiveViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "WarpPerspectiveViewController.h"
@@ -16,9 +16,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _weakself;
-    CGFloat w = weakself.topImageView.width;
-    CGFloat h = weakself.topImageView.height;
+    __weak __typeof(self) weakself = self;
+    CGFloat w = weakself.topImageView.frame.size.width;
+    CGFloat h = weakself.topImageView.frame.size.height;
     self.bottomSlider.value = 0.5;
     weakself.bottomImageView.image =
     [weakself.topImageView.image kj_opencvWarpPerspectiveWithKnownPoints:KJKnownPointsMake(kPoint(0, 0), kPoint(w-50, 30), kPoint(w, h-20), kPoint(20, h)) size:CGSizeMake(w, h)];

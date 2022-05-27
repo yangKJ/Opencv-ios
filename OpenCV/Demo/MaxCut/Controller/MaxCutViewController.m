@@ -1,9 +1,9 @@
 //
 //  MaxCutViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "MaxCutViewController.h"
@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     self.topImageView.image = [UIImage imageNamed:@"MaxCut"];
     self.topImageView.backgroundColor = UIColor.blackColor;
-    _weakself;
+    __weak __typeof(self) weakself = self;
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvCutMaxRegionImage];
     };

@@ -1,9 +1,9 @@
 //
 //  ImageBlendViewController.m
-//  MetalQueen
+//  OpencvQueen
 //
 //  Created by Condy on 2021/3/20.
-//  https://github.com/YangKJ/MetalQueen
+//  https://github.com/YangKJ/OpencvQueen
 
 
 #import "ImageBlendViewController.h"
@@ -24,17 +24,17 @@
         image = [ImageBlendViewController kj_BitmapChangeImageSize:self.topImageView.image.size image:image];
     }
     self.topSlider.value = 0.5;
-    _weakself;
+    __weak __typeof(self) weakself = self;
     weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvBlendImage:image alpha:0.5];
     self.kButtonAction = ^{
         weakself.bottomImageView.image = [weakself.topImageView.image kj_opencvBlendImage:image alpha:0.5];
     };
     self.kSliderMoving = ^(CGFloat value) {
         __block UIImage *img = weakself.topImageView.image;
-        kGCD_async(^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             CGFloat x = 1 * value;
             img = [img kj_opencvBlendImage:image alpha:x];
-            kGCD_main(^{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 weakself.bottomImageView.image = img;                
             });
         });
